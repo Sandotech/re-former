@@ -12,12 +12,24 @@
 
 <%# Railsifying with form_tag %>
 
-<%= form_tag("/users", method: "post") do %>
-  <%= label_tag(:username, "Username") %>
-  <%= text_field_tag(:username) %>
-	<%= label_tag(:email, "Email") %>
-  <%= text_field_tag(:email) %>
-	<%= label_tag(:password, "Password") %>
-  <%= password_field_tag(:password) %>
-	<%= submit_tag("New") %>
+<%# <%= form_tag("/users", method: "post") do %> 
+  <%# <%= label_tag(:username, "Username") %> 
+  <%# <%= text_field_tag(:username) %>
+	<%# <%= label_tag(:email, "Email") %> 
+  <%# <%= text_field_tag(:email) %> 
+	<%# <%= label_tag(:password, "Password") %> 
+  <%# <%= password_field_tag(:password) %>
+	<%# <%= submit_tag("New") %>
+<%# <% end %> 
+
+<%# Railsifying with form_with %>
+
+<%= form_with model: @user, url: "/users", method: :post do |form| %>
+  <%= form.label :username, "Username" %>
+  <%= form.text_field :username, placeholder: "juanito123"%>
+	<%= form.label :email, "Email" %>
+  <%= form.text_field :email, placeholder: "juanito2003@gmail.com"%>
+	<%= form.label :password, "Password" %>
+  <%= form.password_field :password, placeholder: "******" %>
+	<%= form.submit "New" %>
 <% end %>
