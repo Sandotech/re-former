@@ -1,4 +1,5 @@
-<form action="/users" method="post" accept-charset="UTF-8">
+<%# OLD HTML %>
+<%# <form action="/users" method="post" accept-charset="UTF-8">
     <input name="authenticity_token" type="hidden" value="J7CBxfHalt49OSHp27hblqK20c9PgwJ108nDHX/8Cts=" />
     <label for="username">Username</label>
     <input id="username" name="user[username]" type="text">
@@ -7,4 +8,16 @@
     <label for="password">Password</label>
     <input id="password" name="user[password]" type="password">
     <input name="commit" type="submit" value="New">
-</form>
+</form> %>
+
+<%# Railsifying with form_tag %>
+
+<%= form_tag("/users", method: "post") do %>
+  <%= label_tag(:username, "Username") %>
+  <%= text_field_tag(:username) %>
+	<%= label_tag(:email, "Email") %>
+  <%= text_field_tag(:email) %>
+	<%= label_tag(:password, "Password") %>
+  <%= password_field_tag(:password) %>
+	<%= submit_tag("New") %>
+<% end %>
