@@ -1,0 +1,23 @@
+<h2>Update your user</h2>
+
+<% if @user.errors.any? %>
+
+<h3><%= pluralize(@user.errors.count, 'error')%> prohibited this user from being updated:</h3>
+
+	<ul>
+		<% @user.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+	</ul>
+
+<% end %>
+
+<%= form_with model: @user, url: @user, method: :patch do |form| %>
+	<%= form.label :username, "New username" %>
+	<%= form.text_field :username, placeholder: "PeterPotter" %>
+	<%= form.label :email, "New email" %>
+	<%= form.text_field :email, placeholder: "bose@gmail.com"%>
+	<%= form.label :password, "New password" %>
+	<%= form.password_field :password, placeholder: "Your new password" %>
+	<%= form.submit "Update" %>
+<% end %>

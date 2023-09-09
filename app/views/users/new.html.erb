@@ -24,6 +24,18 @@
 
 <%# Railsifying with form_with %>
 
+<% if @user.errors.any? %>
+
+<h3><%= pluralize(@user.errors.count, 'error')%> prohibited this user from being saved:</h3>
+
+	<ul>
+		<% @user.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+	</ul>
+
+<% end %>
+
 <%= form_with model: @user, url: "/users", method: :post do |form| %>
   <%= form.label :username, "Username" %>
   <%= form.text_field :username, placeholder: "juanito123"%>
